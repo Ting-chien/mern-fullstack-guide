@@ -1,23 +1,30 @@
 import React from 'react';
-import './UsersList.css'
-import UserItem from './UserItem'
+
+import UserItem from './UserItem';
+import './UsersList.css';
 
 const UsersList = props => {
   if (props.items.length === 0) {
     return (
       <div className="center">
-        <h2>No User Found.</h2>
+        <h2>No users found.</h2>
       </div>
-    )
+    );
   }
+
   return (
-    <ul>
-      { props.items.map(user => {
-        console.log(user)
-        return <UserItem key={user.id} id={user.id} name={user.name} image={user.image} placeCounts={user.places} />
-      })}
+    <ul className="users-list">
+      {props.items.map(user => (
+        <UserItem
+          key={user.id}
+          id={user.id}
+          image={user.image}
+          name={user.name}
+          placeCount={user.places}
+        />
+      ))}
     </ul>
-  )
-}
+  );
+};
 
 export default UsersList;
